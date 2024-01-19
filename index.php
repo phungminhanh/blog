@@ -3,10 +3,14 @@ require "model/DBConnection.php";
 require "model/PostDB.php";
 require "model/Post.php";
 require "controller/PostController.php";
+<<<<<<< HEAD
 require "model/AuthorDB.php ";
 require "model/Author.php";
 require "controller/AuthorController.php";
 use Controller\AuthorController;
+=======
+
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
 use \Controller\PostController;
 ?>
 <html>
@@ -22,9 +26,14 @@ use \Controller\PostController;
             <div class="navbar navbar-default">
                 <a class="navbar-brand" href="index.php">My Blog</a>
             </div>
+<<<<<<< HEAD
              <?php
             $controller = new \Controller\PostController();
             $controllera = new \Controller\AuthorController();
+=======
+            <?php
+            $controller = new \Controller\PostController();
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
             $page = isset($_REQUEST['page'])? $_REQUEST['page'] : NULL;
 
             switch ($page){
@@ -40,6 +49,7 @@ use \Controller\PostController;
                 case 'edit':
                     $controller->edit();
                     break;
+<<<<<<< HEAD
                 case 'addAuthor':
                     $controllera->adda();
                     break;
@@ -59,6 +69,13 @@ use \Controller\PostController;
            
            
              
+=======
+                default:
+                    $controller->index();
+                    break;
+            }
+            ?>
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
         </div>
     </body>
 </html>

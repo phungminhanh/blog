@@ -17,10 +17,14 @@
         <label>Content</label>
         <textarea name="content" class="form-control"></textarea>
     </div>
+<<<<<<< HEAD
     <div class="form-group">
         <label>authorId</label>
         <textarea name="id_author" class="form-control"></textarea>
     </div>
+=======
+   
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary"/>
         <a href="index.php" class="btn btn-default">Cancel</a>

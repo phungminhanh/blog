@@ -8,17 +8,27 @@ use \model\Post;
 class PostController
 {
     public $postDB;
+<<<<<<< HEAD
     public $authorDB;
+=======
+
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
     public function __construct()
     {
         $connection = new DBConnection("mysql:host=127.0.0.1;dbname=blog","root", "1234");
         $this->postDB = new PostDB($connection->connect());
+<<<<<<< HEAD
        
+=======
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
     }
 
     public function index(){
         $postsData = $this->postDB->getAll();
+<<<<<<< HEAD
         
+=======
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
         include 'view/list.php';
     }
 
@@ -44,8 +54,12 @@ class PostController
     public function delete(){
         if($_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $_GET['id'];
+<<<<<<< HEAD
             $posts = $this->postDB->get($id);
             $post=$posts['post'];
+=======
+            $post = $this->postDB->get($id);
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
             include 'view/delete.php';
         } else {
             $id = $_POST['id'];

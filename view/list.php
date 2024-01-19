@@ -13,6 +13,7 @@
             <a href="index.php?page=delete&id=<?php echo $postData['post']->id; ?>" class="btn btn-warning btn-sm">Delete</a>
         </li>
     <?php endforeach; ?>
+<<<<<<< HEAD
     </ul>
     <p>
     <a href="index.php?page=addAuthor" class="btn btn-primary">Create new author</a>
@@ -26,3 +27,6 @@
         <?php endforeach; ?>
     </ul>
 
+=======
+</ul>
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76

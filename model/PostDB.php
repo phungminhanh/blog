@@ -12,6 +12,7 @@ class PostDB
 
     public function create($post){
         
+<<<<<<< HEAD
         $sql = "INSERT INTO `posts` (`title`, `teaser`, `content`, `author_id`) VALUES (?, ?, ?, ?)";
         $statement = $this->connection->prepare($sql);
         $statement->bindParam(1, $post->title);
@@ -26,6 +27,15 @@ class PostDB
         }
     
         return $statement->execute();
+=======
+         $sql = "INSERT `posts` SET `title` = ?, `teaser` = ?, `content` = ?, `author_id` = ? WHERE `id` = ?";
+         $statement = $this->connection->prepare($sql);
+         $statement->bindParam(1, $post->title);
+         $statement->bindParam(2, $post->teaser);
+         $statement->bindParam(3, $post->content);
+         $statement->bindParam(4, $post->idAuthor); 
+         return $statement->execute(); 
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
         /*$sql = "INSERT INTO `posts`(`title`, `teaser`, `content`) VALUES (?, ?, ?)";
         $statement = $this->connection->prepare($sql);
         $statement->bindParam(1, $post->title);
@@ -62,7 +72,11 @@ class PostDB
     public function get($id){
         $sql = "SELECT posts.*, authors.name AS author_name
             FROM posts
+<<<<<<< HEAD
             LEFT JOIN authors ON posts.author_id = authors.id
+=======
+            JOIN authors ON posts.author_id = authors.id
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
             WHERE posts.id = ?";
     $statement = $this->connection->prepare($sql);
     $statement->bindParam(1, $id);
@@ -70,6 +84,10 @@ class PostDB
     $row = $statement->fetch();
 
    
+<<<<<<< HEAD
+=======
+        // Tạo đối tượng Post từ dữ liệu bài viết
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
         $post = new Post($row['title'], $row['teaser'], $row['content'], $row['created'],$row['author_id']);
         $post->id = $row['id'];
         $data['post'] = $post;
@@ -92,18 +110,30 @@ class PostDB
     {
         $sql="SELECT posts.* , authors.name as author_name 
         FROM posts 
+<<<<<<< HEAD
         LEFT JOIN authors on posts.author_id = authors.id";
         $statement = $this->connection->prepare($sql);
         $statement->execute();
         $result =$statement->fetchALL();
         $postsData =[];
+=======
+        JOIN authors on posts.author_id = authors.id";
+        $statement = $this->connection->prepare($sql);
+        $statement->execute();
+        $result =$statement->fetchALL();
+        $post =[];
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
         foreach ($result as $row)
         {
             
             $post = new Post($row['title'], $row['teaser'], $row['content'], $row['created'],$row['author_id']);
             $post->id = $row['id'];
             
+<<<<<<< HEAD
             $postData =  [
+=======
+            $postData = [
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
                 'post' => $post,
                 'name_author' => $row['author_name']
             ];
@@ -111,9 +141,15 @@ class PostDB
             $postsData[] = $postData;
 
             
+<<<<<<< HEAD
            
         }
         return $postsData;
+=======
+            return $postsData;
+        }
+        
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
         /*$sql = "SELECT * FROM `posts`";
         $statement = $this->connection->prepare($sql);
         $statement->execute();
@@ -127,7 +163,10 @@ class PostDB
         return $posts;
     }*/
 }
+<<<<<<< HEAD
  
+=======
+>>>>>>> 1fc53212bc0db9f13cbdc52917127630abed3c76
 }
 
         
