@@ -1,24 +1,28 @@
 <?php
 namespace Controller;
 
+
 use \model\DBConnection;
+use \model\AuthorDB;
+use \model\Author;
 use \model\PostDB;
 use \model\Post;
-
 class PostController
 {
     public $postDB;
+    
     public $authorDB;
     public function __construct()
     {
         $connection = new DBConnection("mysql:host=127.0.0.1;dbname=blog","root", "1234");
+        $this->authorDB = new AuthorDB($connection->connect());
         $this->postDB = new PostDB($connection->connect());
        
     }
 
     public function index(){
         $postsData = $this->postDB->getAll();
-        
+        $authors = $this->authorDB->getAllAuthors();
         include 'view/list.php';
     }
 

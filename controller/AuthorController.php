@@ -17,11 +17,7 @@ class AuthorController
         $this->authorDB = new AuthorDB($connection->connect());
         $this->postDB = new PostDB($connection->connect());
     }
-    public function indexa(){
-        $authors = $this->authorDB->getAllAuthors();
-       
-        include 'view/list.php';
-    }
+   
     public function adda(){
         if($_SERVER['REQUEST_METHOD'] === 'GET'){
             include 'view/addAuthor.php';
@@ -38,21 +34,26 @@ class AuthorController
             $author = $this->authorDB->getAuthor($id);
             include 'view/deleteAuthor.php';
         } else {
-            $posts = $authorDB->getAllAuthorsPost($id);
+            $id = $_POST['id'];
+            $posts = $this->authorDB->getAllAuthorsPost($id);
 
         
         foreach ($posts as $post) {
             
             if (isset($post)) {
                 $post->idAuthor=null;
-            } else {
-                echo "Không tồn tại bài viết để xóa.";
+                $this->postDB->update($post->id,$post);
             }
         }
-            $id = $_POST['id'];
             $this->authorDB->delete($id);
             header('Location: index.php');
         }
+    }
+    public function viewAuthor(){
+        $id = $_GET['id'];
+        $author = $this->authorDB->getAuthor($id);
+        $posts = $this->authorDB->getAllAuthorsPost($id);
+        include 'view/viewAuthor.php';
     }
 
 }

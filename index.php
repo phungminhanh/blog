@@ -46,10 +46,13 @@ use \Controller\PostController;
                 case 'deleteAuthor':
                     $controllera->deleteAuthor();
                     break;
+                case'viewAuthor':
+                    $controllera->viewAuthor();
+                    break;
                 default:
                     {
                     $controller->index();
-                     $controllera->indexa();
+                    
                     }
                     break;
             }

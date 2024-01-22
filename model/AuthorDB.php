@@ -36,7 +36,7 @@ class AuthorDB
 {
     $sql = "SELECT * FROM `posts` WHERE `author_id` = ?";
     $statement = $this->connection->prepare($sql);
-    $statement->bindParam(1, $authorId); // Bind tham số vào truy vấn
+    $statement->bindParam(1, $authorId); 
     $statement->execute();
     $result = $statement->fetchAll();
     $posts = [];
